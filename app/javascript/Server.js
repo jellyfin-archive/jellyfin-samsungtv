@@ -554,7 +554,7 @@ Server.testConnectionSettings = function (server,fromFile) {
 
 Server.Authenticate = function(UserId, UserName, Password) {
 	var url = Server.getServerAddr() + "/Users/AuthenticateByName?format=json";
-    var params =  JSON.stringify({"Username":UserName,"Password":Password});
+    var params =  JSON.stringify({"Username":UserName,"Pw":Password});
     
     var xmlHttp = new XMLHttpRequest();	
     xmlHttp.open( "POST", url , false ); //Authenticate must be false - need response before continuing!
