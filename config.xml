@@ -18,14 +18,14 @@
 	<childlock itemtype="boolean">n</childlock>
 	<videomute itemtype="boolean">n</videomute>
 	<dcont itemtype="boolean">y</dcont>
-	<widgetname itemtype="string">Emby</widgetname>
-	<description itemtype="string">Emby for Samsung Smart TV</description>
+	<widgetname itemtype="string">Jellyfin</widgetname>
+	<description itemtype="string">Jellyfin for Samsung Smart TV</description>
 	<width itemtype="string">1920</width>
 	<height itemtype="string">1080</height>
 	<author itemtype="group"> 
 		<name itemtype="String">ChessDragon136</name>
-		<email itemtype="string">emby.media/community</email>
-		<link itemtype="string">emby.media</link>
+		<email itemtype="string">forum.jellyfin.org</email>
+		<link itemtype="string">jellyfin.org</link>
 		<organization itemtype="string"/>
 	</author>
 </widget>
