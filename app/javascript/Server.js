@@ -523,7 +523,7 @@ Server.testConnectionSettings = function (server,fromFile) {
 			       		ServerVersion.start();
 			       	}
 		        } else if (xmlHttp.status === 0) {
-		        	GuiNotifications.setNotification("Your Emby server is not responding.","Network Error "+xmlHttp.status,true);
+		        	GuiNotifications.setNotification("Your Jellyfin server is not responding.","Network Error "+xmlHttp.status,true);
 					Support.removeSplashScreen();
 			    	if (fromFile == true) {
 			    		setTimeout(function(){
@@ -536,7 +536,7 @@ Server.testConnectionSettings = function (server,fromFile) {
 			    		}, 3000);
 			    	}
 		        } else {
-		        	GuiNotifications.setNotification("Emby server connection error.","Network Error "+xmlHttp.status,true);
+		        	GuiNotifications.setNotification("Jellyfin server connection error.","Network Error "+xmlHttp.status,true);
 					Support.removeSplashScreen();
 			    	if (fromFile == true) {
 			    		setTimeout(function(){
