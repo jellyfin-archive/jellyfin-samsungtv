@@ -11,7 +11,7 @@ GuiPage_NewServer.start = function() {
 	
 	//Insert html into page
 	document.getElementById("pageContent").innerHTML = "<div class='GuiPage_NewServer12key'> \
-		<p style='padding-bottom:5px;'>Enter the IP address & port number of your Emby server. <br>(You can leave the port blank for 8096)</p> \
+		<p style='padding-bottom:5px;'>Enter the IP address & port number of your Jellyfin server. <br>(You can leave the port blank for 8096)</p> \
 		<form><input id='1' type='text' size='5'  maxlength='3' value=''/>. \
 		<input id='2' type='text' size='5'  maxlength='3' value=''/>. \
 		<input id='3' type='text' size='5'  maxlength='3' value=''/>. \
@@ -19,7 +19,7 @@ GuiPage_NewServer.start = function() {
 		<input id='port' type='text' size='8'  maxlength='5'/></form> \ \
 		<p style='padding-top:10px;padding-bottom:5px'>OR</p> \
 		<p style='padding-bottom:5px'>Enter your server hostname here without http:// and <br>including : and port number.</p> \
-		<form><input id='host' style='z-index:10;' type='text' size='45' value=''/></form> \
+		<form><input id='host' style='z-index:10;' type='text' size='45' maxlength='40' value=''/></form> \
 		</div>";
 	
 	//Set Backdrop
@@ -81,7 +81,12 @@ var GuiPage_NewServer_Input  = function(id,previousId, nextId) {
     
     var ime = new IMEShell(id, imeReady,'en');
     ime.setKeypadPos(1300,90);
-    ime.setMode('_num');
+
+    if (id == 'host') {
+    	ime.setMode('_latin_small');
+    } else {
+    	ime.setMode('_num');
+    }
     
     var previousElement = document.getElementById(previousId);
     var nextElement = document.getElementById(nextId);
@@ -106,6 +111,11 @@ var GuiPage_NewServer_Input  = function(id,previousId, nextId) {
             		//not valid
                 	GuiNotifications.setNotification("Please re-enter your server details.","Incorrect Details",true);
             	} else {
+                	var Port = document.getElementById('port').value;
+            		if (host.indexOf(":") === -1) {
+            			host = host + ":" + (Port == "" ? "8096" : Port);
+            		}
+            		
             		document.getElementById("pageContent").focus();                                   
                     //Timeout required to allow notification command above to be displayed
                     setTimeout(function(){Server.testConnectionSettings(host,false);}, 1000);
